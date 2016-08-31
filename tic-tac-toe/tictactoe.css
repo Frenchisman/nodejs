@@ -26,8 +26,32 @@ body{
 	border-radius: 50%;
 }
 
-button{
+.btn-default{
 	display: block;
 	float: none;
 	margin: auto;
+	color: #FFF;
+
+	background: linear-gradient(271deg, #ff0000, #ffcd00, #00ff15, #00e6ff, #001cff, #ff00ea, #ff0009);
+	background-size: 1400% 1400%;
+
+	-webkit-animation: gradientAnim 56s ease infinite;
+	-moz-animation: gradientAnim 56s ease infinite;
+	animation: gradientAnim 56s ease infinite;
+
+	@-webkit-keyframes gradientAnim {
+	    0%{background-position:0% 50%}
+	    50%{background-position:100% 51%}
+	    100%{background-position:0% 50%}
+	}
+	@-moz-keyframes gradientAnim {
+	    0%{background-position:0% 50%}
+	    50%{background-position:100% 51%}
+	    100%{background-position:0% 50%}
+	}
+	@keyframes gradientAnim { 
+	    0%{background-position:0% 50%}
+	    50%{background-position:100% 51%}
+	    100%{background-position:0% 50%}
+	}
 }
