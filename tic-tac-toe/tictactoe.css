@@ -1,0 +1,15 @@
+.board{
+	display: flex;
+	flex-direction: row;
+	flex-wrap : wrap;
+	width: 330px;
+	float: none;
+	margin: auto;
+}
+
+.spot{
+	height: 100px;
+	width: 33%;
+	border: 1px solid #0FF;
+
+}
