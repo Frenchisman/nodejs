@@ -1,3 +1,7 @@
+body{
+	padding-top: 50px;
+}
+
 .board{
 	display: flex;
 	flex-direction: row;
@@ -10,10 +14,20 @@
 .spot{
 	height: 100px;
 	width: 33%;
-	border: 1px solid #0FF;
+	border: 1px solid #000;
 
 }
 
 #winner{
 	text-align: center;
+}
+
+.img-round{
+	border-radius: 50%;
+}
+
+button{
+	display: block;
+	float: none;
+	margin: auto;
 }
