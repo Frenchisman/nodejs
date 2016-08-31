@@ -33,8 +33,7 @@ function jouer(i,j){
 	tour++;
 	board[i][j] = symbole;
 	spot.innerHTML = symbole;
-	// if(tour > 4){
-		//console.log('jouer '+i+' '+j);
+	//if(tour > 4){
 		var end = isFinished(i,j);
 		if(end){
 			gid('winner').innerHTML = symbole +' Win !';
@@ -42,7 +41,7 @@ function jouer(i,j){
 		if(tour >= (boardSize * boardSize) && !end){
 			gid('winner').innerHTML = 'Draw !';
 		}
-	// }
+	//}
 }
 
 function isFinished(i,j){
@@ -80,11 +79,13 @@ function isFinished(i,j){
 
 	//Check second diag
 	if(i+j == boardSize-1){
+		console.log(i+','+j)
 		for(var x = boardSize-1; x >= 0; x--){
+			console.log(x+','+((boardSize-1)-x));
 			if(board[x][(boardSize-1)-x] != symbole){
 				break;
 			}
-			if(x == boardSize-1){
+			if(x == 0){ //We invert the counter so win condition is when x reaches 0
 				return true;
 				//win for symbole
 			}
