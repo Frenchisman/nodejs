@@ -33,7 +33,7 @@ function jouer(i,j){
 	tour++;
 	board[i][j] = symbole;
 	spot.innerHTML = symbole;
-	//if(tour > 4){
+	if(tour > 4){
 		var end = isFinished(i,j);
 		if(end){
 			gid('winner').innerHTML = symbole +' Win !';
@@ -41,7 +41,7 @@ function jouer(i,j){
 		if(tour >= (boardSize * boardSize) && !end){
 			gid('winner').innerHTML = 'Draw !';
 		}
-	//}
+	}
 }
 
 function isFinished(i,j){
