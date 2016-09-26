@@ -8,13 +8,16 @@ var finished = false;
 var tour = 0;
 
 function reset(){
+	//reset the board
 	for(var i = 0; i < boardSize; i++){
+		//reset standard variables
 		board[i] = [];
 		finished = false;
 		tour = 0;
 		symbole = '';
 		for(var j = 0; j < boardSize; j++){
 			board[i][j] = [];
+			//Remove images if they exist
 			spot = gid('c'+i+j);
 			if(spot.hasChildNodes()){
 				spot.removeChild(spot.childNodes[0]);
@@ -22,6 +25,7 @@ function reset(){
 		}
 	}
 
+	//Add onClick to all squares
 	for(var i = 0; i < boardSize; i++){
 		for(var j = 0; j < boardSize; j++){
 			var divName = 'c'+i.toString()+j.toString();
@@ -36,11 +40,22 @@ function reset(){
 	}
 }
 
-
+/*
+ * Function gid(divId)
+ * Returns the element with id 'divId'
+ */
 var gid = function(divId){
 	return document.getElementById(divId);
 }
 
+/*
+ * Function jouer(i,j)
+ * Plays the square at position i, j. 
+ * Plays the square, checks if game over condition is met,
+ * and removes the onClick function for the played square.
+ * ( There is no check to see if square is playable,
+ * since played squares are not supposed to be clickable !)
+ */
 function jouer(i,j){
 	if(!finished){
 		spot = gid('c'+i+j);	
@@ -80,6 +95,12 @@ function jouer(i,j){
 	
 }
 
+/*
+ * Function hasWon(i,j)
+ * Checks if the square played at position i,j 
+ * ends the game. Lots of loops to check the win condition.
+ * Stops as soon as possible if win condition is not met.
+ */
 function hasWon(i,j){
 	// Check Columns
 	for(var y = 0; y < boardSize; y++){
@@ -121,13 +142,13 @@ function hasWon(i,j){
 			if(board[x][(boardSize-1)-x] != symbole){
 				break;
 			}
-			if(x == 0){ //We invert the counter so win condition is when x reaches 0
+			if(x == 0){ //Counter is inverted so win condition is when x reaches 0
 				return true;
 				//win for symbole
 			}
 		}
 	}
 }
-
+//Initialize the board so game is ready to play.
 reset();
 
