@@ -8,18 +8,35 @@ var finished = false;
 var tour = 0;
 
 function reset(){
-for(var i = 0; i < boardSize; i++){
-	board[i] = [];
+	for(var i = 0; i < boardSize; i++){
+		board[i] = [];
+		finished = false;
+		tour = 0;
+		symbole = '';
+		for(var j = 0; j < boardSize; j++){
+			board[i][j] = [];
+			spot = gid('c'+i+j);
+			if(spot.hasChildNodes()){
+				spot.removeChild(spot.childNodes[0]);
+			}
+		}
+	}
+
+	for(var i = 0; i < boardSize; i++){
+		for(var j = 0; j < boardSize; j++){
+			var divName = 'c'+i.toString()+j.toString();
+
+			gid(divName).onclick = function(i,j){
+				return function(){
+					
+					jouer(i,j);
+				};
+			}(i,j)
+		}
+	}
 }
 
-finished = false;
-tour = 0;
-symbole = '';
 
-
-
-
-}
 var gid = function(divId){
 	return document.getElementById(divId);
 }
@@ -113,15 +130,4 @@ function hasWon(i,j){
 }
 
 reset();
-for(var i = 0; i < boardSize; i++){
-	for(var j = 0; j < boardSize; j++){
-		var divName = 'c'+i.toString()+j.toString();
 
-		gid(divName).onclick = function(i,j){
-			return function(){
-				
-				jouer(i,j);
-			};
-		}(i,j)
-	}
-}
